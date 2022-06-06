@@ -7,53 +7,50 @@
 
 ![](docs/stepzen_getting_started.png)
 
-3. Install the StepZen CLI: 
-```bash 
+3. Install the StepZen CLI:
+
+```bash
 sudo npm install -g stepzen
 ```
 
 4. Log in with your StepZen account
+
 ```bash
 stepzen login -a ACCOUNT_NAME
 ```
+
 ![](docs/stepzen_login_terminal.png)
 
+5. Launch the CLI prompt to configure your endpoint
 
+```bash
+stepzen import graphql
+```
 
+![](docs/cli_prompt.png)
 
-Use cases
-- building a booking system using different platforms: booking.com, airbnb, Google hotel API, hotels.com, tripadvisor.com, Expedia.com, agoda.com
+6. Build your endpoint
 
-Here's another list: 
-- Airbnb API
-- TripAdvisor API
-- Expedia API
-- Cleartrip API
-- Priceline API
-- Sabre API
-- Hotelbeds API
-- Amadeus GDS API
-- Zilyo API
-- Hotwire API
+```bash
+stepzen start
+```
 
-Idea: aggregate these API to build a 2-sided marketplace:
-- hotels list once and are added to every other platforms
-- users can find the best deals
+https://publicc056a7b62261a59d.stepzen.net/api/gontoz/__graphql
 
-Challenges: I suppose that these APIs require some type of partnership of some sort...
-- TripAdvisor: free! (licensed partners)
-- Expedia: free and looks cool
-- HotelBeds: free and easy
-- Amadeus GDS: free and easy
-- Zilyo: free and easy
-- Hotwire: free and easy
-- Google Travel Partner API
-  - Management of account links between Hotel Center and Google Ads
-  - Management of selected hotel settings
-  - Property performance data via the Property Performance Report Views Service
-  - Hotel data via the Hotel Views Service
-  - Participation report data via the Participation Report Views Service
-  - Price accuracy data via the Price Accuracy Views Service
-  - Price coverage data via the Price Coverage Views Service
-  - Itinerary and pricing data via the Price Views Service
-  - Management of commissions reconciliation reports via the Reconciliation Reports Service (commission pay-per-stay partners only)
+Story:
+
+- You have an internal app that has been populating a database with information - examples are perhaps Github or a hotel booking system
+- You want to quickly build a public-facing application and you need an API on top of that database
+
+Application:
+
+- Use gontoz.escape.tech through StepZen
+-
+
+## Todos
+
+- Setup Escape in the CI
+- Detect a data leak
+- Make adequat changes in the app to fix it
+  - Use the skip directive to hide some fields (like password)
+  - Use the skip directive to configure access control?
