@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: gontoz_escape_tech_graphql_config
+      ContentType: application/json

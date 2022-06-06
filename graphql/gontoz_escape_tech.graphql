@@ -1,0 +1,220 @@
+scalar Upload
+
+type Account {
+  id: ID
+  amount: Int
+  owner: User
+}
+
+type Role {
+  name: String!
+  description: String
+}
+
+type CreditCard {
+  number: String!
+  cvv: String!
+  belong_to: User!
+}
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  provider: String
+  password: String!
+  resetPasswordToken: String
+  confirmed: Boolean!
+  blocked: Boolean!
+  role: Role!
+  transactions_received: [Transaction]
+  transactions_emitted: [Transaction]
+  balance: Float
+  city: String
+  country: String
+  address: String
+  credit_card: CreditCard
+  iban: String
+  last_ip: String
+  job_title: String
+  secret: String
+  info: JSON
+}
+
+type File {
+  id: ID!
+}
+
+type Transaction {
+  id: ID!
+  description: String
+  user_from: User!
+  user_to: User!
+  amount: Float!
+  media: File
+  image_resize_parameters: String
+  image: String
+}
+
+type PasswordResetSuccess {
+  success: Boolean!
+  user: User
+}
+
+type NewUserSuccess {
+  success: Boolean!
+  user: User
+}
+
+type AuthentificationResult {
+  success: Boolean!
+  token: String
+}
+
+input TransactionInput {
+  user_id_from: ID!
+  user_id_to: ID!
+  amount: Float!
+  image_resize_parameters: [Int]
+  image: String
+  description: String
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String!
+  city: String
+  country: String
+  address: String
+  iban: String
+  last_ip: String
+  job_title: String
+  secret: String
+}
+
+type Query {
+  userTransactions(user_id: ID!): [Transaction]
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  me: User
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  debug(test: String): [User]
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  user(user_id: ID): User
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  bitcoinPrice(api_key: String): String
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  menu(menu_type: String): String
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  this_query_doesnt_exist: String
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  get_bitcoin_price(bitcoin_url: String): String
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  authorizeTransaction(authorization_code: String): String
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  printCurrencyUsed(user_id: String): String
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+}
+
+type Mutation {
+  resetPassword(
+    username: String!
+    resetPasswordToken: String!
+    new_password: String!
+  ): PasswordResetSuccess!
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  newTransaction(transaction: TransactionInput!): Transaction
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  newUser(userInput: UserInput!): NewUserSuccess
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  authentification(
+    username: String!
+    password: String!
+  ): AuthentificationResult!
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  uploadUserAvatar(file: Upload!): String!
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+  addUserInfo(info: JSON!): User!
+    @graphql(
+      endpoint: "https://gontoz.escape.tech/"
+      prefix: { value: "", includeRootOperations: true }
+      headers: [{ name: "Content-Type", value: "$ContentType;" }]
+      configuration: "gontoz_escape_tech_graphql_config"
+    )
+}

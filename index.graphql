@@ -1,0 +1,3 @@
+schema @sdl(files: ["graphql/gontoz_escape_tech.graphql"]) {
+  query: Query
+}
