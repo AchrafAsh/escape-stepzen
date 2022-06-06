@@ -1,0 +1,20 @@
+name: Trigger Escape Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Escape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger scan
+        uses: Escape-Technologies/escape-trigger-refresh@main
+        with:
+          environment_id: ${{ secrets.ESCAPE_ENVIRONMENT_ID }}
+          api_key: ${{ secrets.ESCAPE_API_KEY }}
+			on:
+			  push:
+			    branches:
+			      - main
