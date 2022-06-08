@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger scan
+      - name: Escape trigger refresh
         uses: Escape-Technologies/escape-trigger-refresh@main
         with:
           environment_id: ${{ secrets.ESCAPE_ENVIRONMENT_ID }}
