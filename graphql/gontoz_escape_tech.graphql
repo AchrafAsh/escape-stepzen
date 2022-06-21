@@ -22,7 +22,7 @@ type User {
   username: String!
   email: String!
   provider: String
-  password: String!
+  # password: String!
   resetPasswordToken: String
   confirmed: Boolean!
   blocked: Boolean!
@@ -33,11 +33,11 @@ type User {
   city: String
   country: String
   address: String
-  credit_card: CreditCard
-  iban: String
-  last_ip: String
+  # credit_card: CreditCard
+  # iban: String
+  # last_ip: String
   job_title: String
-  secret: String
+  # secret: String
   info: JSON
 }
 
@@ -116,13 +116,13 @@ type Query {
       headers: [{ name: "Content-Type", value: "$ContentType;" }]
       configuration: "gontoz_escape_tech_graphql_config"
     )
-  user(user_id: ID): User
-    @graphql(
-      endpoint: "https://gontoz.escape.tech/"
-      prefix: { value: "", includeRootOperations: true }
-      headers: [{ name: "Content-Type", value: "$ContentType;" }]
-      configuration: "gontoz_escape_tech_graphql_config"
-    )
+  # user(user_id: ID): User
+  #   @graphql(
+  #     endpoint: "https://gontoz.escape.tech/"
+  #     prefix: { value: "", includeRootOperations: true }
+  #     headers: [{ name: "Content-Type", value: "$ContentType;" }]
+  #     configuration: "gontoz_escape_tech_graphql_config"
+  #   )
   bitcoinPrice(api_key: String): String
     @graphql(
       endpoint: "https://gontoz.escape.tech/"
@@ -131,13 +131,6 @@ type Query {
       configuration: "gontoz_escape_tech_graphql_config"
     )
   menu(menu_type: String): String
-    @graphql(
-      endpoint: "https://gontoz.escape.tech/"
-      prefix: { value: "", includeRootOperations: true }
-      headers: [{ name: "Content-Type", value: "$ContentType;" }]
-      configuration: "gontoz_escape_tech_graphql_config"
-    )
-  this_query_doesnt_exist: String
     @graphql(
       endpoint: "https://gontoz.escape.tech/"
       prefix: { value: "", includeRootOperations: true }
