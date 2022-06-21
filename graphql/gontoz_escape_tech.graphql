@@ -109,13 +109,13 @@ type Query {
       headers: [{ name: "Content-Type", value: "$ContentType;" }]
       configuration: "gontoz_escape_tech_graphql_config"
     )
-  debug(test: String): [User]
-    @graphql(
-      endpoint: "https://gontoz.escape.tech/"
-      prefix: { value: "", includeRootOperations: true }
-      headers: [{ name: "Content-Type", value: "$ContentType;" }]
-      configuration: "gontoz_escape_tech_graphql_config"
-    )
+  # debug(test: String): [User]
+  #   @graphql(
+  #     endpoint: "https://gontoz.escape.tech/"
+  #     prefix: { value: "", includeRootOperations: true }
+  #     headers: [{ name: "Content-Type", value: "$ContentType;" }]
+  #     configuration: "gontoz_escape_tech_graphql_config"
+  #   )
   # user(user_id: ID): User
   #   @graphql(
   #     endpoint: "https://gontoz.escape.tech/"
